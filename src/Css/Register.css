@@ -1,0 +1,95 @@
+.register-page-unique {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.register-form-unique {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-title-unique {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register-input-unique, .register-select-unique {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-button-unique {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.register-button-unique:hover {
+    background-color: #0056b3;
+}
+
+.divider-unique {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #aaa;
+}
+
+.divider-unique::before,
+.divider-unique::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+    margin: 0 10px;
+}
+
+.btn-google-unique {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-google-unique img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.login-link-unique {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-link-anchor {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-link-anchor:hover {
+    text-decoration: underline;
+}
