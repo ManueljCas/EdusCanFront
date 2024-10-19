@@ -1,56 +1,60 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../../Css/Login.css';
+import LogoGoogle from  '../../Img/LogoGoogle.png';
 
 function Login() {
-    const navigate = useNavigate();
-
-    const handleLogin = () => {
-        navigate('/home');
-    };
-
     return (
         <div className="login-page">
-            <form className="login-form">
-                <h1 className="login-title">Hi, Welcome Back! 👋</h1>
-                <label className="login-label">Email</label>
-                <input
-                    type="email"
-                    placeholder="example@gmail.com"
-                    className="login-input"
-                />
-                <label className="login-label">Password</label>
-                <input
-                    type="password"
-                    placeholder="Enter Your Password"
-                    className="login-input"
-                />
+            <form className="login-form" autoComplete="off">
+                <h1 className="login-title">Iniciar Sesión</h1>
+
+                <div className="login-group">
+                    <input
+                        type="email"
+                        className="login-input"
+                        name="login-email"
+                        autoComplete="new-email"
+                        placeholder=" "
+                    />
+                    <label className="login-label">Correo</label>
+                </div>
+
+                <div className="login-group">
+                    <input
+                        type="password"
+                        className="login-input"
+                        name="login-password"
+                        autoComplete="new-password"
+                        placeholder=" "
+                    />
+                    <label className="login-label">Contraseña</label>
+                </div>
+
                 <div className="options-container">
                     <div className="remember-me-container">
-                        <input type="checkbox" id="rememberMe" />
-                        <label htmlFor="rememberMe" className="remember-label">Remember Me</label>
+                        <input type="checkbox" id="remember" />
+                        <label htmlFor="remember" className="remember-label">Recuérdame</label>
                     </div>
-                    <span className="forgot-password">Forgot Password?</span>
+                    <span className="forgot-password">¿Olvidaste tu contraseña?</span>
                 </div>
-                <button type="button" className="login-button" onClick={handleLogin}>
-                    Login
+
+                <button type="button" className="login-button">
+                    Iniciar Sesión
                 </button>
 
-                <div className="divider">
-                    <span>Or With</span>
-                </div>
+                <div className="divider">O</div>
 
-                <button type="button" className="google-button">
-                    <img 
-                        src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png" 
-                        alt="Google logo" 
+                <div className="google-button">
+                    <img
+                        src={LogoGoogle}
+                        alt="Google Logo"
                     />
-                    Login with Google
-                </button>
+                    Inicia sesión con Google
+                </div>
 
-                <p className="signup-link">
-                    Don’t have an account? <a href="/register" className="signup-anchor">Sign Up</a>
-                </p>
+                <div className="signup-link">
+                    ¿No tienes una cuenta? <a href="/register" className="signup-anchor">Regístrate</a>
+                </div>
             </form>
         </div>
     );

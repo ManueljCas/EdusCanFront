@@ -4,50 +4,69 @@ import '../../Css/Register.css';
 function Register() {
     return (
         <div className="register-page-unique">
-            <form className="register-form-unique">
+            <form className="register-form-unique" autoComplete="off">
                 <h1 className="register-title-unique">Crea una cuenta</h1>
-                <input 
-                    type="text" 
-                    placeholder="Ingresa tu nombre completo" 
-                    className="register-input-unique" 
-                />
-                <input 
-                    type="email" 
-                    placeholder="Ingresa tu correo electrónico" 
-                    className="register-input-unique" 
-                />
-                <input 
-                    type="password" 
-                    placeholder="Ingresa tu contraseña" 
-                    className="register-input-unique" 
-                />
-                <input 
-                    type="password" 
-                    placeholder="Confirma tu contraseña" 
-                    className="register-input-unique" 
-                />
+
+                <div className="register-group-unique">
+                    <input
+                        type="text"
+                        className="register-input-unique"
+                        placeholder=" "
+                        autoComplete="off"
+                    />
+                    <label className="register-label-unique">Nombre Completo</label>
+                </div>
+
+                <div className="register-group-unique">
+                    <input
+                        type="email"
+                        className="register-input-unique"
+                        placeholder=" "
+                        autoComplete="off"
+                    />
+                    <label className="register-label-unique">Correo Electrónico</label>
+                </div>
+
+                <div className="register-group-unique">
+                    <input
+                        type="password"
+                        className="register-input-unique"
+                        placeholder=" "
+                        autoComplete="new-password"
+                    />
+                    <label className="register-label-unique">Contraseña</label>
+                </div>
+
+                <div className="register-group-unique">
+                    <input
+                        type="password"
+                        className="register-input-unique"
+                        placeholder=" "
+                        autoComplete="new-password"
+                    />
+                    <label className="register-label-unique">Confirma tu Contraseña</label>
+                </div>
+                
                 <select className="register-select-unique">
                     <option value="">Seleccione su rol</option>
-                    <option value="admin">Admin</option>
+                    <option value="admin">Administrador</option>
                     <option value="user">Usuario</option>
                 </select>
 
-                <button type="submit" className="register-button-unique">Sign Up</button>
+                <button type="submit" className="register-button-unique">Registrarse</button>
 
-                <div className="divider-unique">
-                    <span>Or With</span>
-                </div>
+                <div className="divider-unique">O</div>
 
                 <button className="btn-google-unique">
-                    <img 
-                        src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png" 
-                        alt="Google logo" 
+                    <img
+                        src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"
+                        alt="Google logo"
                     />
-                    Signup with Google
+                    Registrarse con Google
                 </button>
 
                 <p className="login-link-unique">
-                    Already have an account? <a href="/" className="login-link-anchor">Login</a>
+                    ¿Ya tienes una cuenta? <a href="/" className="login-link-anchor">Inicia Sesión</a>
                 </p>
             </form>
         </div>

@@ -11,6 +11,7 @@
     max-width: 320px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .login-title {
@@ -20,21 +21,45 @@
     margin-bottom: 20px;
 }
 
-.login-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-    text-align: left;
+.login-group {
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .login-input {
-    margin-bottom: 15px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
     width: 100%;
+    padding: 16px 15px 8px;
+    border: 1px solid #9E9E9E;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
     box-sizing: border-box;
+}
+
+.login-input:focus {
+    background-color: #f3f8ff;
+    color: black;
+}
+
+.login-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #9E9E9E;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.login-input:focus + .login-label,
+.login-input:not(:placeholder-shown) + .login-label {
+    top: 7px;
+    font-size: 12px;
+    color: #7a7a7a;
 }
 
 .options-container {
