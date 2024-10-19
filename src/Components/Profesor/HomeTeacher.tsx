@@ -53,7 +53,7 @@ function HomeTeacher() {
     const eliminarGrupo = (id: string) => {
         confirmAlert({
             customUI: ({ onClose }) => (
-                <div className="react-confirm-alert">
+                <div>
                     <h1>Confirmar eliminación</h1>
                     <p>¿Estás seguro de que quieres eliminar este grupo?</p>
                     <div className="react-confirm-alert-button-group">
@@ -88,7 +88,19 @@ function HomeTeacher() {
         <div className="home-container-unique">
             <h1 className="home-title-unique">Grupos</h1>
             {grupos.length === 0 ? (
-                <p className="no-groups-text-unique">En este momento no se ha creado ningún grupo...</p>
+                <div>
+                <p className="no-groups-text-unique">
+                  En este momento no se ha creado ningún grupo.
+                </p>
+                <button 
+                  className="add-group-button"
+                  onClick={() => navigate('/creategroup')}
+                >
+                  Agrega un Grupo
+                </button>
+              </div>
+              
+                
             ) : (
                 <div className="grupos-container-unique">
                     {Object.entries(categorias).map(([categoria, grupos]) => (
