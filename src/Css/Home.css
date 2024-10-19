@@ -1,0 +1,150 @@
+.grupos-grid-unique {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 2 columnas en pantallas grandes */
+    gap: 15px;
+    width: 100%;
+    justify-items: center;
+}
+
+.grupo-card-unique {
+    background-color: #2c3e50;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grupo-card-unique:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grupo-nombre-unique {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.menu-icon-unique {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Animaciones para menú desplegable */
+.menu-desplegable-unique {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+}
+
+.menu-desplegable-unique.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-item-unique {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item-unique:last-child {
+    border-bottom: none;
+}
+
+.menu-item-unique:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos del modal */
+.react-confirm-alert-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.react-confirm-alert {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.react-confirm-alert h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.react-confirm-alert p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.react-confirm-alert .react-confirm-alert-button-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.react-confirm-alert button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Botón Sí - Azul */
+.react-confirm-alert button:nth-child(1) {
+    background-color: #007bff;
+    color: white;
+}
+
+.react-confirm-alert button:nth-child(1):hover {
+    background-color: #0056b3;
+}
+
+/* Botón No - Rojo */
+.react-confirm-alert button:nth-child(2) {
+    background-color: #dc3545;
+    color: white;
+}
+
+.react-confirm-alert button:nth-child(2):hover {
+    background-color: #c82333;
+}

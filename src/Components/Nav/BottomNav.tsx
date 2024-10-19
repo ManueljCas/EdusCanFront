@@ -23,7 +23,7 @@ function BottomNav() {
                 {location.pathname === '/home' && (
                     <div
                         className="bottom-nav-add-button"
-                        onClick={() => navigate('/creategrup')}
+                        onClick={() => navigate('/creategroup')}
                     >
                         <MdAdd size={36} />
                     </div>
