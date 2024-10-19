@@ -6,16 +6,25 @@ function CreateGroup() {
     const navigate = useNavigate();
     const [nombre, setNombre] = useState('');
     const [materia, setMateria] = useState('');
-    const [grado, setGrado] = useState('Matutino'); // Valor por defecto
+    const [turno, setTurno] = useState('Matutino'); // Valor por defecto
     const [dias, setDias] = useState('');
     const [duracion, setDuracion] = useState('');
 
+    const generateId = () => Date.now().toString();
+
     const crearGrupo = () => {
-        const nuevoGrupo = { nombre, materia, grado, dias, duracion };
+        const nuevoGrupo = { 
+            id: generateId(), 
+            nombre, 
+            materia, 
+            turno, 
+            dias, 
+            duracion 
+        };
         const gruposGuardados = JSON.parse(localStorage.getItem('grupos') || '[]');
         gruposGuardados.push(nuevoGrupo);
         localStorage.setItem('grupos', JSON.stringify(gruposGuardados));
-        navigate('/home'); // Redirigir al home después de crear el grupo
+        navigate('/home');
     };
 
     return (
@@ -36,17 +45,14 @@ function CreateGroup() {
                     value={materia}
                     onChange={(e) => setMateria(e.target.value)}
                 />
-
-                {/* Nuevo Select para Grado */}
                 <select 
                     className="create-group-select"
-                    value={grado} 
-                    onChange={(e) => setGrado(e.target.value)}
+                    value={turno} 
+                    onChange={(e) => setTurno(e.target.value)}
                 >
                     <option value="Matutino">Matutino</option>
                     <option value="Vespertino">Vespertino</option>
                 </select>
-
                 <input
                     type="text"
                     placeholder="Días de la Semana"

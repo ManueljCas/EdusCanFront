@@ -8,8 +8,8 @@ import '../../Css/Home.css';
 
 function HomeTeacher() {
     const [grupos, setGrupos] = useState<Grupo[]>([]);
-    const [menuActivo, setMenuActivo] = useState<number | null>(null);
-    const menuRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const [menuActivo, setMenuActivo] = useState<string | null>(null);
+    const menuRefs = useRef<Record<string, HTMLDivElement | null>>({});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,28 +19,30 @@ function HomeTeacher() {
     }, []);
 
     const categorias = {
-        Matutino: grupos.filter((grupo) => grupo.grado === 'Matutino'),
-        Vespertino: grupos.filter((grupo) => grupo.grado === 'Vespertino'),
+        Matutino: grupos.filter((grupo) => grupo.turno === 'Matutino'),
+        Vespertino: grupos.filter((grupo) => grupo.turno === 'Vespertino'),
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            menuActivo !== null &&
+            menuRefs.current[menuActivo] &&
+            !menuRefs.current[menuActivo]?.contains(event.target as Node)
+        ) {
+            setMenuActivo(null);
+        }
     };
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                menuActivo !== null &&
-                menuRefs.current[menuActivo] &&
-                !menuRefs.current[menuActivo]?.contains(event.target as Node)
-            ) {
-                setMenuActivo(null);
-            }
-        };
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [menuActivo]);
 
-    const toggleMenu = (index: number) => {
-        setMenuActivo(menuActivo === index ? null : index);
+    const toggleMenu = (id: string, event: React.MouseEvent) => {
+        event.stopPropagation();
+        setMenuActivo(menuActivo === id ? null : id);
     };
 
     const handleNavigate = (path: string) => {
@@ -48,7 +50,7 @@ function HomeTeacher() {
         setMenuActivo(null);
     };
 
-    const eliminarGrupo = (index: number) => {
+    const eliminarGrupo = (id: string) => {
         confirmAlert({
             customUI: ({ onClose }) => (
                 <div className="react-confirm-alert">
@@ -58,11 +60,11 @@ function HomeTeacher() {
                         <button
                             className="btn-confirmar"
                             onClick={() => {
-                                const nuevosGrupos = grupos.filter((_, i) => i !== index);
+                                const nuevosGrupos = grupos.filter((grupo) => grupo.id !== id);
                                 setGrupos(nuevosGrupos);
                                 localStorage.setItem('grupos', JSON.stringify(nuevosGrupos));
-                                onClose(); // Cerrar el modal
-                                setMenuActivo(null); // Cerrar menú desplegable
+                                onClose();
+                                setMenuActivo(null);
                             }}
                         >
                             Sí
@@ -70,8 +72,8 @@ function HomeTeacher() {
                         <button
                             className="btn-cancelar"
                             onClick={() => {
-                                onClose(); // Cerrar el modal
-                                setMenuActivo(null); // Cerrar menú desplegable
+                                onClose();
+                                setMenuActivo(null);
                             }}
                         >
                             No
@@ -86,9 +88,7 @@ function HomeTeacher() {
         <div className="home-container-unique">
             <h1 className="home-title-unique">Grupos</h1>
             {grupos.length === 0 ? (
-                <p className="no-groups-text-unique">
-                    En este momento no se ha creado ningún grupo, es una lástima...
-                </p>
+                <p className="no-groups-text-unique">En este momento no se ha creado ningún grupo...</p>
             ) : (
                 <div className="grupos-container-unique">
                     {Object.entries(categorias).map(([categoria, grupos]) => (
@@ -96,40 +96,31 @@ function HomeTeacher() {
                             <div key={categoria}>
                                 <h2 className="category-title-unique">{categoria}</h2>
                                 <div className="grupos-grid-unique">
-                                    {grupos.map((grupo, index) => (
-                                        <div key={index} className="grupo-card-unique">
+                                    {grupos.map((grupo) => (
+                                        <div key={grupo.id} className="grupo-card-unique">
                                             <span className="grupo-nombre-unique">{grupo.nombre}</span>
                                             <span
                                                 className="menu-icon-unique"
-                                                onClick={() => toggleMenu(index)}
+                                                onClick={(event) => toggleMenu(grupo.id, event)}
                                             >
                                                 ⋮
                                             </span>
-                                            <div
-                                                className={`menu-desplegable-unique ${
-                                                    menuActivo === index ? 'active' : ''
-                                                }`}
-                                                ref={(el) => (menuRefs.current[index] = el)}
-                                            >
+                                            {menuActivo === grupo.id && (
                                                 <div
-                                                    className="menu-item-unique"
-                                                    onClick={() => handleNavigate('/alumnos')}
+                                                    className="menu-desplegable-unique active"
+                                                    ref={(el) => (menuRefs.current[grupo.id] = el)}
                                                 >
-                                                    Alumnos
+                                                    <div className="menu-item-unique" onClick={() => handleNavigate('/alumnos')}>
+                                                        Alumnos
+                                                    </div>
+                                                    <div className="menu-item-unique" onClick={() => handleNavigate('/edit')}>
+                                                        Editar
+                                                    </div>
+                                                    <div className="menu-item-unique" onClick={() => eliminarGrupo(grupo.id)}>
+                                                        Eliminar
+                                                    </div>
                                                 </div>
-                                                <div
-                                                    className="menu-item-unique"
-                                                    onClick={() => handleNavigate('/edit')}
-                                                >
-                                                    Editar
-                                                </div>
-                                                <div
-                                                    className="menu-item-unique"
-                                                    onClick={() => eliminarGrupo(index)}
-                                                >
-                                                    Eliminar
-                                                </div>
-                                            </div>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
