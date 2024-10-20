@@ -12,7 +12,7 @@ function CreateGroup() {
 
     const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo') || 'null');
 
-    const generateId = () => Date.now().toString();
+    const generateId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
     const crearGrupo = () => {
         if (!usuarioActivo) {
@@ -28,7 +28,7 @@ function CreateGroup() {
             turno,
             dias,
             duracion,
-            creador: usuarioActivo.correo, // Asociar el grupo al usuario
+            creador: usuarioActivo.correo,
         };
 
         const gruposGuardados = JSON.parse(localStorage.getItem('grupos') || '[]');

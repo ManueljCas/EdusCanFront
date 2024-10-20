@@ -24,6 +24,7 @@ function HomeTeacher() {
         const gruposDelUsuario = gruposGuardados.filter(
             (grupo) => grupo.creador === usuarioActivo.correo
         );
+
         setGrupos(gruposDelUsuario);
     }, [navigate]);
 
@@ -50,12 +51,12 @@ function HomeTeacher() {
     }, [menuActivo]);
 
     const toggleMenu = (id: string, event: React.MouseEvent) => {
-        event.stopPropagation();
+        event.stopPropagation(); // Evita la propagación hacia la tarjeta
         setMenuActivo(menuActivo === id ? null : id);
     };
 
     const handleNavigate = (path: string) => {
-        navigate(path);
+        navigate(path); // No se necesita `event` aquí
         setMenuActivo(null);
     };
 
@@ -93,8 +94,11 @@ function HomeTeacher() {
         });
     };
 
-    const goToCalendario = (id: string) => {
-        navigate(`/calendario/${id}`);
+    const goToCalendario = (id: string, event: React.MouseEvent) => {
+        if (!menuActivo) {
+            event.stopPropagation(); // Asegura que el clic no se propague al menú
+            navigate(`/calendar/${id}`);
+        }
     };
 
     return (
@@ -112,7 +116,7 @@ function HomeTeacher() {
                 </div>
             ) : (
                 <div className="grupos-container-unique">
-                    {Object.entries(categorias).map(([categoria, grupos]) => (
+                    {Object.entries(categorias).map(([categoria, grupos]) =>
                         grupos.length > 0 && (
                             <div key={categoria}>
                                 <h2 className="category-title-unique">{categoria}</h2>
@@ -121,19 +125,12 @@ function HomeTeacher() {
                                         <div
                                             key={grupo.id}
                                             className="grupo-card-unique"
-                                            onClick={(event) => {
-                                                if (!event.defaultPrevented) {
-                                                    goToCalendario(grupo.id);
-                                                }
-                                            }}
+                                            onClick={(event) => goToCalendario(grupo.id, event)}
                                         >
                                             <span className="grupo-nombre-unique">{grupo.nombre}</span>
                                             <span
                                                 className="menu-icon-unique"
-                                                onClick={(event) => {
-                                                    event.preventDefault();
-                                                    toggleMenu(grupo.id, event);
-                                                }}
+                                                onClick={(event) => toggleMenu(grupo.id, event)}
                                             >
                                                 ⋮
                                             </span>
@@ -168,7 +165,7 @@ function HomeTeacher() {
                                 </div>
                             </div>
                         )
-                    ))}
+                    )}
                 </div>
             )}
             <BottomNav />

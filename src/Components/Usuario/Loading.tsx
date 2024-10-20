@@ -6,6 +6,7 @@ function Loading() {
         <div className="loading-container">
             <h1 className="loading-title">EduScan</h1>
             <span className="loading-emoji">👋</span>
+            <p className='loading-text'>Cargando...</p>
         </div>
     );
 }
