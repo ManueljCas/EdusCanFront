@@ -6,20 +6,20 @@ function CreateGroup() {
     const navigate = useNavigate();
     const [nombre, setNombre] = useState('');
     const [materia, setMateria] = useState('');
-    const [turno, setTurno] = useState('Matutino'); // Valor por defecto
+    const [turno, setTurno] = useState('Matutino');
     const [dias, setDias] = useState('');
     const [duracion, setDuracion] = useState('');
 
     const generateId = () => Date.now().toString();
 
     const crearGrupo = () => {
-        const nuevoGrupo = { 
-            id: generateId(), 
-            nombre, 
-            materia, 
-            turno, 
-            dias, 
-            duracion 
+        const nuevoGrupo = {
+            id: generateId(),
+            nombre,
+            materia,
+            turno,
+            dias,
+            duracion,
         };
         const gruposGuardados = JSON.parse(localStorage.getItem('grupos') || '[]');
         gruposGuardados.push(nuevoGrupo);
@@ -31,42 +31,62 @@ function CreateGroup() {
         <div className="create-group-container">
             <h1 className="create-group-title">Agregar un grupo</h1>
             <form className="create-group-form" onSubmit={(e) => e.preventDefault()}>
-                <input
-                    type="text"
-                    placeholder="Nombre del Grupo"
-                    className="create-group-input"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Materia"
-                    className="create-group-input"
-                    value={materia}
-                    onChange={(e) => setMateria(e.target.value)}
-                />
-                <select 
-                    className="create-group-select"
-                    value={turno} 
-                    onChange={(e) => setTurno(e.target.value)}
-                >
-                    <option value="Matutino">Matutino</option>
-                    <option value="Vespertino">Vespertino</option>
-                </select>
-                <input
-                    type="text"
-                    placeholder="Días de la Semana"
-                    className="create-group-input"
-                    value={dias}
-                    onChange={(e) => setDias(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Duración de las Sesiones"
-                    className="create-group-input"
-                    value={duracion}
-                    onChange={(e) => setDuracion(e.target.value)}
-                />
+                <div className="input-group">
+                    <input
+                        type="text"
+                        className="input"
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        placeholder=" "
+                    />
+                    <label className="label">Nombre del Grupo</label>
+                </div>
+
+                <div className="input-group">
+                    <input
+                        type="text"
+                        className="input"
+                        value={materia}
+                        onChange={(e) => setMateria(e.target.value)}
+                        placeholder=" "
+                    />
+                    <label className="label">Materia</label>
+                </div>
+
+                <div className="input-group">
+                    <select
+                        className="input"
+                        value={turno}
+                        onChange={(e) => setTurno(e.target.value)}
+                    >
+                        <option value="Matutino">Matutino</option>
+                        <option value="Vespertino">Vespertino</option>
+                    </select>
+                    <label className="label">Turno</label>
+                </div>
+
+                <div className="input-group">
+                    <input
+                        type="text"
+                        className="input"
+                        value={dias}
+                        onChange={(e) => setDias(e.target.value)}
+                        placeholder=" "
+                    />
+                    <label className="label">Días de la Semana</label>
+                </div>
+
+                <div className="input-group">
+                    <input
+                        type="text"
+                        className="input"
+                        value={duracion}
+                        onChange={(e) => setDuracion(e.target.value)}
+                        placeholder=" "
+                    />
+                    <label className="label">Duración de las Sesiones</label>
+                </div>
+
                 <button
                     type="button"
                     className="create-group-button create-button-blue"
