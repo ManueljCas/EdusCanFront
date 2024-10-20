@@ -1,0 +1,192 @@
+.add-students-container {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.add-students-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Grupo de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.add-students-input {
+    width: 100%;
+    padding: 16px 15px 8px;
+    border: 1px solid #9E9E9E;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.add-students-input:focus {
+    background-color: #f3f8ff;
+    color: black;
+}
+
+.add-students-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #9E9E9E;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.add-students-input:focus + .add-students-label,
+.add-students-input:not(:placeholder-shown) + .add-students-label {
+    top: 7px;
+    font-size: 12px;
+    color: #7a7a7a;
+}
+
+/* Overlay de búsqueda */
+.search-overlay {
+    position: absolute;
+    top: 100%; /* Alineado justo debajo del input */
+    left: 0;
+    margin-top: 5px;
+    width: 100%;
+    max-height: 150px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.search-result-item {
+    padding: 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-result-item.selected {
+    background-color: #e0ffe0;
+}
+
+.selected-tag {
+    font-size: 12px;
+    color: green;
+    margin-left: 10px;
+}
+
+/* Tarjeta de alumnos seleccionados */
+.alumnos-seleccionados {
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    height: 300px;
+}
+
+.no-seleccionados-text {
+    text-align: center;
+    color: #9E9E9E;
+    font-size: 14px;
+}
+
+/* Animaciones para los alumnos seleccionados */
+.alumno-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.alumno-item.removing {
+    animation: fadeOutDown 0.4s ease-in;
+}
+
+.alumno-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Botón de eliminar */
+.remove-alumno-button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Botones */
+.add-students-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-students-button.confirm {
+    background-color: #007bff;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.add-students-button.confirm:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.add-students-button.cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+.add-students-button.cancel:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}

@@ -19,6 +19,7 @@
     align-items: center;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1; /* Asegura que la tarjeta esté debajo del menú */
 }
 
 .grupo-card-unique:hover {
@@ -39,6 +40,7 @@
     right: 10px;
     font-size: 24px;
     cursor: pointer;
+    z-index: 2; /* Prioridad sobre la tarjeta */
 }
 
 /* Animaciones para menú desplegable */
@@ -55,7 +57,7 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 5;
+    z-index: 3; /* Asegura que el menú esté por encima de la tarjeta */
 }
 
 .menu-desplegable-unique.active {
@@ -149,7 +151,7 @@
     background-color: #c82333;
 }
 
-.no-groups-text-unique{
+.no-groups-text-unique {
     text-align: center;
     margin: 10px;
 }
@@ -164,11 +166,10 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .add-group-button:hover {
+}
+
+.add-group-button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-  }
-  
+}

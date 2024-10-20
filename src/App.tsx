@@ -16,6 +16,7 @@ import AddStudents from './Components/Profesor/AddStudents';
 import Calendar from './Components/Profesor/Calendar';
 import RollCall from './Components/Profesor/RollCall';
 import ScanQr from './Components/Profesor/ScanQr';
+import EditGroup from './Components/Profesor/EditGroup';
 
 import './App.css';
 
@@ -34,10 +35,11 @@ function App() {
           <Route path="/home-student" element={<HomeStudent />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/qr-student" element={<QrStudent />} />
-          <Route path="/add-students" element={<AddStudents />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/roll-call" element={<RollCall />} />
+          <Route path="/add-students/:id" element={<AddStudents />} />
+          <Route path="/calendar/:id" element={<Calendar />} />
+          <Route path="/roll-call/:id" element={<RollCall />} />
           <Route path="/scan-qr" element={<ScanQr />} />
+          <Route path="/edit-group/:id" element={<EditGroup />} />
         </Routes>
       </div>
     </Router>
