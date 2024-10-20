@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import { urlEdusCan } from '../src/endpoints';
 
 // Importación de los componentes necesarios
 import Login from './Components/Usuario/Login';
@@ -21,6 +23,17 @@ import EditGroup from './Components/Profesor/EditGroup';
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    axios.get(urlEdusCan)
+      .then(() => {
+        console.log('Data fetched successfully');
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
   return (
     <Router>
       <div className="App">
