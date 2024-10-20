@@ -1,9 +1,10 @@
-// src/Interfaces/Group.ts
+// Interfaces/Group.ts
 export interface Grupo {
-    id: string;  // Identificador único del grupo
+    id: string;
     nombre: string;
     materia: string;
-    turno: string;  // Se usa turno en lugar de grado
+    turno: string;
     dias: string;
     duracion: string;
+    creador: string; // Agregamos la propiedad 'creador'
 }

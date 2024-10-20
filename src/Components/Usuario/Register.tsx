@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Usuario } from '../../Interfaces/User'; // Importamos la interfaz
+import { useNavigate } from 'react-router-dom';
 import '../../Css/Register.css';
 
 function Register() {
+    const navigate = useNavigate();
+    const [nombreCompleto, setNombreCompleto] = useState<string>('');
+    const [correo, setCorreo] = useState<string>('');
+    const [contraseña, setContraseña] = useState<string>('');
+    const [confirmarContraseña, setConfirmarContraseña] = useState<string>('');
+    const [rol, setRol] = useState<string>('');
+
+    const registrarUsuario = () => {
+        if (contraseña !== confirmarContraseña) {
+            alert('Las contraseñas no coinciden.');
+            return;
+        }
+
+        const nuevoUsuario: Usuario = { nombreCompleto, correo, contraseña, rol };
+        const usuariosGuardados: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
+        usuariosGuardados.push(nuevoUsuario);
+        localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+        alert('Usuario registrado exitosamente.');
+        navigate('/'); // Redirigir al login después del registro
+    };
+
     return (
         <div className="register-page-unique">
-            <form className="register-form-unique" autoComplete="off">
+            <form className="register-form-unique" autoComplete="off" onSubmit={(e) => e.preventDefault()}>
                 <h1 className="register-title-unique">Crea una cuenta</h1>
 
                 <div className="register-group-unique">
                     <input
                         type="text"
                         className="register-input-unique"
+                        value={nombreCompleto}
+                        onChange={(e) => setNombreCompleto(e.target.value)}
                         placeholder=" "
                         autoComplete="off"
                     />
@@ -21,6 +46,8 @@ function Register() {
                     <input
                         type="email"
                         className="register-input-unique"
+                        value={correo}
+                        onChange={(e) => setCorreo(e.target.value)}
                         placeholder=" "
                         autoComplete="off"
                     />
@@ -31,6 +58,8 @@ function Register() {
                     <input
                         type="password"
                         className="register-input-unique"
+                        value={contraseña}
+                        onChange={(e) => setContraseña(e.target.value)}
                         placeholder=" "
                         autoComplete="new-password"
                     />
@@ -41,19 +70,30 @@ function Register() {
                     <input
                         type="password"
                         className="register-input-unique"
+                        value={confirmarContraseña}
+                        onChange={(e) => setConfirmarContraseña(e.target.value)}
                         placeholder=" "
                         autoComplete="new-password"
                     />
                     <label className="register-label-unique">Confirma tu Contraseña</label>
                 </div>
-                
-                <select className="register-select-unique">
-                    <option value="">Seleccione su rol</option>
-                    <option value="admin">Administrador</option>
-                    <option value="user">Usuario</option>
-                </select>
 
-                <button type="submit" className="register-button-unique">Registrarse</button>
+                <div className="register-group-unique">
+                    <select
+                        className="register-select-unique"
+                        value={rol}
+                        onChange={(e) => setRol(e.target.value)}
+                    >
+                        <option value="">Seleccione su rol</option>
+                        <option value="Teacher">Profesor</option>
+                        <option value="student">Alumno</option>
+                    </select>
+                    <label className="register-label-unique">Rol</label>
+                </div>
+
+                <button type="button" className="register-button-unique" onClick={registrarUsuario}>
+                    Registrarse
+                </button>
 
                 <div className="divider-unique">O</div>
 

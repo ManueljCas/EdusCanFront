@@ -13,10 +13,19 @@ function HomeTeacher() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const gruposGuardados = localStorage.getItem('grupos');
-        const gruposParsed: Grupo[] = gruposGuardados ? JSON.parse(gruposGuardados) : [];
-        setGrupos(gruposParsed);
-    }, []);
+        const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo') || 'null');
+        if (!usuarioActivo) {
+            alert('No se encontró el usuario activo.');
+            navigate('/');
+            return;
+        }
+
+        const gruposGuardados: Grupo[] = JSON.parse(localStorage.getItem('grupos') || '[]');
+        const gruposDelUsuario = gruposGuardados.filter(
+            (grupo) => grupo.creador === usuarioActivo.correo
+        );
+        setGrupos(gruposDelUsuario);
+    }, [navigate]);
 
     const categorias = {
         Matutino: grupos.filter((grupo) => grupo.turno === 'Matutino'),
@@ -41,7 +50,7 @@ function HomeTeacher() {
     }, [menuActivo]);
 
     const toggleMenu = (id: string, event: React.MouseEvent) => {
-        event.stopPropagation(); 
+        event.stopPropagation();
         setMenuActivo(menuActivo === id ? null : id);
     };
 
@@ -93,9 +102,7 @@ function HomeTeacher() {
             <h1 className="home-title-unique">Grupos</h1>
             {grupos.length === 0 ? (
                 <div>
-                    <p className="no-groups-text-unique">
-                        En este momento no se ha creado ningún grupo.
-                    </p>
+                    <p className="no-groups-text-unique">No tienes grupos creados.</p>
                     <button
                         className="add-group-button"
                         onClick={() => navigate('/creategroup')}

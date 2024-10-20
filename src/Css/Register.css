@@ -5,7 +5,7 @@
     align-items: center;
     height: 100vh;
     background-color: #f5f5f5;
-    padding-top: 40px; /* Espacio superior adicional */
+    padding-top: 40px;
     box-sizing: border-box;
 }
 
@@ -27,7 +27,7 @@
     margin-top: 10px;
 }
 
-/* Grupo flotante de inputs */
+/* Grupo flotante de inputs y select */
 .register-group-unique {
     position: relative;
     margin-bottom: 10px;
@@ -46,7 +46,7 @@
     outline: none;
     transition: all 0.3s ease;
     box-sizing: border-box;
-    color: #000; /* Mismo color de texto */
+    color: #000;
 }
 
 /* Fondo al hacer focus */
@@ -54,7 +54,7 @@
 .register-select-unique:focus {
     background-color: #f3f8ff;
     color: black;
-    border-color: #000; /* Cambiar el contorno al hacer foco */
+    border-color: #000;
 }
 
 /* Estilo del label flotante */
@@ -69,8 +69,11 @@
     pointer-events: none;
 }
 
+/* Animación del label al enfocar o llenar */
 .register-input-unique:focus + .register-label-unique,
-.register-input-unique:not(:placeholder-shown) + .register-label-unique {
+.register-select-unique:focus + .register-label-unique,
+.register-input-unique:not(:placeholder-shown) + .register-label-unique,
+.register-select-unique:not([value=""]) + .register-label-unique {
     top: 7px;
     font-size: 12px;
     color: #7a7a7a;
@@ -87,6 +90,7 @@
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 15px;
+    transition: background-color 0.3s ease;
 }
 
 .register-button-unique:hover {
@@ -120,12 +124,17 @@
     border-radius: 8px;
     background-color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn-google-unique img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+.btn-google-unique:hover {
+    background-color: #f0f0f0;
 }
 
 /* Link de inicio de sesión */

@@ -8,6 +8,12 @@ function BottomNav() {
     const navigate = useNavigate();
     const location = useLocation(); // Para obtener la ruta actual
 
+    // Función para cerrar sesión
+    const cerrarSesion = () => {
+        localStorage.removeItem('session'); // Elimina la sesión guardada
+        navigate('/'); // Redirige al login
+    };
+
     return (
         <div className="withBottomNav">
             <div className="bottom-nav-container">
@@ -15,7 +21,7 @@ function BottomNav() {
                 <button onClick={() => navigate('/home')} className="bottom-nav-button home-button">
                     <FiHome size={28} />
                 </button>
-                <button onClick={() => navigate('/notifications')} className="bottom-nav-button button-up1" >
+                <button onClick={() => navigate('/notifications')} className="bottom-nav-button button-up1">
                     <FiBell size={28} />
                 </button>
 
@@ -30,10 +36,13 @@ function BottomNav() {
                 )}
 
                 {/* Íconos del lado derecho */}
-                <button onClick={() => navigate('/editprofile')} className="bottom-nav-button profile-button button-up2">
+                <button
+                    onClick={() => navigate('/editprofile')}
+                    className="bottom-nav-button profile-button button-up2"
+                >
                     <FiUser size={28} />
                 </button>
-                <button onClick={() => navigate('/')} className="bottom-nav-button">
+                <button onClick={cerrarSesion} className="bottom-nav-button">
                     <FiLogOut size={28} />
                 </button>
             </div>
