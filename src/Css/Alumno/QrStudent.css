@@ -1,0 +1,79 @@
+
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el desplazamiento lateral */
+  }
+  
+  .qr-student-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .qr-student-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #000;
+    text-align: center;
+  }
+  
+  .qr-student-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .qr-student-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .qr-student-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .qr-student-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+  }
+  
+  .qr-student-university {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .qr-code-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .qr-code {
+    width: 200px;
+    height: 200px;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    padding: 20px; /* Añadir padding para un margen interno */
+    border: 1px solid #ddd; /* Ajuste de borde más delgado */
+    border-radius: 12px; /* Bordes redondeados */
+    
+  }
+  

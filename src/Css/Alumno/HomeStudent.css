@@ -1,0 +1,129 @@
+/* Components/Alumno/HomeStudent.css */
+
+body, html {
+    font-family: 'Poppins', sans-serif; /* Aplicar la fuente "Poppins" a todo el proyecto */
+    overflow-x: hidden; /* Evita el desplazamiento lateral */  
+  }
+  
+  .home-student {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .home-student-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Margen superior para separar del borde superior */
+    margin-bottom: 20px;
+  }
+  
+  .home-student-title {
+    font-size: 2rem;
+    
+    margin-bottom: 10px;
+    color: #000;
+    text-align: center; /* Centrar texto */
+    font-weight: 900;
+  }
+  
+  .home-student-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .home-student-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast; /* Mejora el renderizado en navegadores Webkit */
+    image-rendering: crisp-edges; /* Mejora el renderizado para bordes nítidos en otros navegadores */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }  
+  
+  .home-student-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-student-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+  }
+  
+  .home-student-email {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #777;
+  }
+  
+  .home-student-welcome {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0; /* Aumentar margen para mayor separación */
+  }
+  
+  .home-student-greeting {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .home-student-subtitle {
+    font-size: 1.5rem;
+    color: #007bff; /* Color azul */
+    margin: 0;
+    font-weight: 700;
+  }
+  
+  .home-student-sections {
+    width: 90%; /* Ajuste del ancho del contenedor */
+    max-width: 350px; /* Limitar el ancho máximo para centrar mejor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .home-student-link {
+    width: 100%; /* Usar todo el ancho del contenedor */
+    background: #fff;
+    padding: 15px;
+    margin: 8px 0;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .home-student-link:hover {
+    background: #f7f7f7;
+  }
+  
+  .home-student-icon {
+    font-size: 1rem;
+    color: #000;
+    margin-left: 10px; /* Añadir espacio entre el texto y el ícono */
+  }
+  

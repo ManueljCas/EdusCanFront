@@ -1,0 +1,163 @@
+/* Components/Alumno/Notifications.css */
+
+body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.notifications-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.notifications-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  align-self: flex-start;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.notifications-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.student-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.student-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+}
+
+.student-email {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.classes-today {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.class-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%; /* Ajuste de ancho para centrado */
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.class-icon {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.present-icon {
+  background-color: #4caf50;
+}
+
+.absent-icon {
+  background-color: #f44336;
+}
+
+.class-details {
+  flex: 1;
+  margin-left: 15px;
+  text-align: left; /* Alineación a la izquierda del texto */
+}
+
+.class-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.class-status {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.class-time {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Elimina el subrayado de los enlaces */
+.class-card-link {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  display: block; /* Asegura que el enlace cubra toda la tarjeta */
+  color: inherit; /* Hereda el color del texto para mantener el diseño */
+}
+
+.class-card h3,
+.class-card p,
+.class-card .class-time {
+  margin: 0;
+  color: #333; /* Asegura que el texto no cambie de color al ser un enlace */
+}
+
